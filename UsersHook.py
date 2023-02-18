@@ -9,13 +9,11 @@ import requests
 import json
 
 class UserHook:
-    accountId = 0 # fun
+    accountId = 0
     
-    # Hook Stuff
     success = True
     started = False
 
-    # Initial Variables
     user_infos = {}
     createdOnHook = ''
     lastOnlineTime = ''
@@ -84,6 +82,14 @@ class UserHook:
     def lastOnline(self):
         if self.hookWorking():
             print(f"{self.user_infos['name']}'s Account were last seen online on {self.lastOnlineHook}")
+
+    # aliases
+    def startHook(self): self.hookStart()
+    def start(self): self.hookStart()
+    def hook(self): self.hookStart()
+    def fetchId(self): self.showInfos()
+    def get(self): self.showInfos()
+    def lastSeen(self): self.lastOnline()
 
 
 #bruh = UserHook(1)
