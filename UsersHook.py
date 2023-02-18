@@ -88,6 +88,7 @@ class UserHook:
     def start(self): self.hookStart()
     def hook(self): self.hookStart()
     def fetchId(self): self.showInfos()
+    def fetch(self): self.showInfos()
     def get(self): self.showInfos()
     def lastSeen(self): self.lastOnline()
 
