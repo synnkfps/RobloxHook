@@ -9,11 +9,13 @@ import requests
 import json
 
 class UserHook:
-    accountId = 0
+    accountId = 0 # fun
     
+    # Hook Stuff
     success = True
     started = False
 
+    # Initial Variables
     user_infos = {}
     createdOnHook = ''
     lastOnlineTime = ''
@@ -60,28 +62,30 @@ class UserHook:
             self.success = False
             self.started = False
 
+    def getHookStatus(self):
+        count = 0
+        # testing
+        if self.started: count+=1
+        if self.success: count+=1
+
+        return count
+
+    def hookWorking(self):
+        return self.getHookStatus() == 2
+        
     def showInfos(self):
-        if self.success and self.started:
+        if self.hookWorking():
             print(f"{self.user_infos['name']}'s Infos:\n- Display Name: {self.user_infos['displayName']}\n- Last Online: {self.lastOnlineHook}\n- Created: {self.createdOnHook}\n- ID: {self.accountId}")
-        elif not self.started:
-            print('>>> Initialize the hook before executing this command')
 
     def createdOn(self):
-        if self.success and self.started:
+        if self.hookWorking():
             print(f"{self.user_infos['name']}'s Account were created on {self.createdOnHook}")
-        elif not self.started:
-            print('>>> Initialize the hook before executing this command')
 
     def lastOnline(self):
-        if self.success and self.started:
+        if self.hookWorking():
             print(f"{self.user_infos['name']}'s Account were last seen online on {self.lastOnlineHook}")
-        elif not self.started:
-            print('>>> Initialize the hook before executing this command')
 
-    def getHookMessage(self):
-        if self.started:
-            print('Hook started')
-        if self.success:
-            print('Hook got success')
-        else:
-            print('Hook did not got success')
+
+#bruh = UserHook(1)
+#bruh.hookStart()
+#bruh.showInfos()
